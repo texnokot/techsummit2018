@@ -1,3 +1,3 @@
-storage_account_name="vstsbuildterraform"
-container_name="terraform-state"
-key="demo-gatsby.terraform.tfstate"
+storage_account_name="techsummittstate8753"
+container_name="tstate"
+key="techsummit.terraform.tfstate"
