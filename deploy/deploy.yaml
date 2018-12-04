@@ -51,4 +51,4 @@ steps:
 
 - script: |
     az storage blob upload-batch -s drop -d \$web --account-name $(BLOB_NAME)
-  displayName: 'copy content and site is ready https://techsummitsecblog.z6.web.core.windows.net/'
+  displayName: 'copy content and site is ready https://$(BLOB_NAME).azureedge.net/index.html'
