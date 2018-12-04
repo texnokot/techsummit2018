@@ -18,7 +18,7 @@ steps:
   inputs:
     buildType: 'specific' # Options: current, specific
     project: 'techsummit2018' # Required when buildType == Specific
-    pipeline: 'blog' # Required when buildType == Specific
+    pipeline: 'build' # Required when buildType == Specific
     downloadType: 'single' # Options: single, specific
     artifactName: 'drop' # Required when downloadType == Single
     downloadPath: '.' 
