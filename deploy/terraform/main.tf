@@ -40,7 +40,7 @@ resource "azurerm_cdn_profile" "webblob-cdn" {
   name                = "${azurerm_storage_account.webblob.name}cdnprofile"
   location            = "${azurerm_resource_group.TechSummit2018.location}"
   resource_group_name = "${azurerm_resource_group.TechSummit2018.name}"
-  sku                 = "Standard_Verizon"
+  sku                 = "Standard_Microsoft"
 }
 
 # Point Azure CDN profile to web endpoint for Static website
