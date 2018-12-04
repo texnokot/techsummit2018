@@ -17,7 +17,7 @@ steps:
 - task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific' # Options: current, specific
-    project: 'gatsby-blog' # Required when buildType == Specific
+    project: 'techsummit2018' # Required when buildType == Specific
     pipeline: 'blog' # Required when buildType == Specific
     downloadType: 'single' # Options: single, specific
     artifactName: 'drop' # Required when downloadType == Single
