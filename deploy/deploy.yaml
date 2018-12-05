@@ -29,26 +29,26 @@ steps:
  
 - script: |
     az extension add --name storage-preview
-    az login --service-principal -u $(ARM_CLIENT_ID) -p $(ARM_CLIENT_SECRET) --tenant $(ARM_TENANT_ID)
+    az login --service-principal -u $(armclientid) -p $(armclientsecret) --tenant $(armtenantid)
   displayName: 'Enable AZ extension and Login'
 
 - script: |
     cd deploy/terraform
     terraform init -backend-config=backend.tfvars
-    terraform apply -auto-approve -var dns_name=$(BLOB_NAME)
+    terraform apply -auto-approve -var dns_name=$(blobname)
   displayName: 'Terraform init and apply'
   env:
-      ARM_TENANT_ID: $(ARM_TENANT_ID)
-      ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-      ARM_CLIENT_ID: $(ARM_CLIENT_ID)
-      ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
-      ARM_ACCESS_KEY: $(ARM_ACCESS_KEY)
+      ARM_TENANT_ID: $(armtenantid)
+      ARM_SUBSCRIPTION_ID: $(armsubscriptionid)
+      ARM_CLIENT_ID: $(armclientid)
+      ARM_CLIENT_SECRET: $(armclientsecret)
+      ARM_ACCESS_KEY: $(armaccesskey)
       
 
 - script: |
-    az storage blob delete-batch -s \$web --account-name $(BLOB_NAME)
+    az storage blob delete-batch -s \$web --account-name $(blobname)
   displayName: 'clean content'
 
 - script: |
-    az storage blob upload-batch -s drop -d \$web --account-name $(BLOB_NAME)
-  displayName: 'copy content and site is ready https://$(BLOB_NAME).azureedge.net/index.html'
+    az storage blob upload-batch -s drop -d \$web --account-name $(blobname)
+  displayName: 'copy content and site is ready https://$(blobname).azureedge.net/index.html'
