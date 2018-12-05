@@ -57,7 +57,7 @@ resource "azurerm_cdn_endpoint" "webblob-cdn-endpt" {
   origin {
     name      = "assets"
     host_name = "${module.query_url.stdout}"
-	https_port = "443"
+	  https_port = "443"
   }
   depends_on = ["module.query_url"]
 }

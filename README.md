@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/VicDemos/techsummit2018/_apis/build/status/build)](https://dev.azure.com/VicDemos/techsummit2018/_build/latest?definitionId=18)
+[![Build Status](https://dev.azure.com/VicDemos/techsummit2018/_apis/build/status/deploy)](https://dev.azure.com/VicDemos/techsummit2018/_build/latest?definitionId=19)
 # MS TechSummit Oslo 2018 demo: Minimal Blog deployed thru Azure DevOps with Terraform and Github usage
 
 
