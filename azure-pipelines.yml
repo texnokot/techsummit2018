@@ -1,54 +1,42 @@
-# Node.js with React
-# Build a Node.js project that uses React.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 resources:
-  containers:
-  - container: terraform_container
-    image: lenisha/terraform-light
-
-pool:
-  vmImage: 'Ubuntu 16.04'
-
-container: terraform_container
+- repo: self
+queue:
+  name: Hosted Ubuntu 1604
+  demands: npm
 
 steps:
-
-- task: DownloadBuildArtifacts@0
+- task: NodeTool@0
+  displayName: 'Install Node.js'
   inputs:
-    buildType: 'specific' # Options: current, specific
-    project: 'gatsby-blog' # Required when buildType == Specific
-    pipeline: 'blog' # Required when buildType == Specific
-    downloadType: 'single' # Options: single, specific
-    artifactName: 'drop' # Required when downloadType == Single
-    downloadPath: '.' 
+    versionSpec: 8.x
+
+
+- task: Npm@1
+  displayName: 'install gatsby'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'install -g gatsby-cli'
+
 
 - script: |
-    ls -la
-  displayName: 'Display contents'
- 
-- script: |
-    az extension add --name storage-preview
-    az login --service-principal -u $(ARM_CLIENT_ID) -p $(ARM_CLIENT_SECRET) --tenant $(ARM_TENANT_ID)
-  displayName: 'Enable AZ extension and Login'
+   npm install
+   npx gatsby build
+  displayName: 'gatsby build'
 
-- script: |
-    cd deploy/terraform
-    terraform init -backend-config=backend.tfvars
-    terraform apply -auto-approve -var dns_name=$(BLOB_NAME)
-  displayName: 'Terraform init and apply'
-  env:
-      ARM_TENANT_ID: $(ARM_TENANT_ID)
-      ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-      ARM_CLIENT_ID: $(ARM_CLIENT_ID)
-      ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
-      ARM_ACCESS_KEY: $(ARM_ACCESS_KEY)
-      
+- task: CopyFiles@2
+  displayName: 'Copy built site'
+  inputs:
+    SourceFolder: public
 
-- script: |
-    az storage blob delete-batch -s \$web --account-name $(BLOB_NAME)
-  displayName: 'clean content'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- script: |
-    az storage blob upload-batch -s drop -d \$web --account-name $(BLOB_NAME)
-  displayName: 'copy content and site is ready https://$(BLOB_NAME).azureedge.net/index.html'
+    CleanTargetFolder: true
+
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts: drop'
+
+
