@@ -97,6 +97,7 @@ Azure pipelines Release pipeline construct is not supporting YAML yet. But we wa
 3. Include all variables saved in Azure Key Vault
 
 ### Link variable group secret to Deploy pipeline
+
 ![link variable group](https://publicbw.blob.core.windows.net/techsummit/linkvariables.gif)
 
 ### Set up triggers
@@ -109,7 +110,7 @@ Now you can run and website should be built and available for you at the address
 
 ### Additional bonus: security
 
-Since I'm a security girl, I always encourage people to have security checks. So we are going to add Whitespace Bolt extension in build pipeline. This allows us to see how secure and updated are used libraries. Additionally, we can see their licenses. Good catch and for free. 
+Since I'm a security girl, I always encourage people to have security checks. So we are going to add WhiteSource Bolt extension in build pipeline. This allows us to see how secure and updated are used libraries. Additionally, we can see their licenses. Good catch and for free. 
 Get extension [here](https://marketplace.visualstudio.com/items?itemName=whitesource.ws-bolt)
 
 To enable it in build pipeline add following in the end of YAML file:
