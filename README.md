@@ -1,22 +1,22 @@
 [![Build Status](https://dev.azure.com/VicDemos/techsummit2018/_apis/build/status/deploy)](https://dev.azure.com/VicDemos/techsummit2018/_build/latest?definitionId=19)
-# MS TechSummit Oslo 2018 demo: Minimal Blog deployed thru Azure DevOps with Terraform and Github usage
 
+# MS TechSummit Oslo 2018 demo  
 
 ## About demo
 
 Inspired by my collegue's blog post: 
 https://open.microsoft.com/2018/11/16/terraform-jamstack-azure-gatsby-azure-pipelines-git/
-How to configure and deploy pls look in provided link. This repository is updated with Azure Key Vault and Whitespace Bolt plugin in deploy pipelines.
+How to configure and deploy pls look in provided link. This repository is updated with Azure Key Vault and WhiteSource Bolt plugin in deploy pipelines.
 
 __Updated and modified for the MS Oslo TechSummit 2018 demo purpose (demo date: 06.12.2018)__
 
-
 ## Architecture of workflow
+
 ![flow](https://open.microsoft.com/wp-content/uploads/2018/11/JAMStack-workflow_image-1-v2.png)
 
 ## Application architecture
 
-The application is based on JAMstack solution. It is a modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup. No backend logic or persistence layer access — everything is encapsulated in the API. More info at [JAMstack homepage](https://jamstack.org/). 
+The application is based on JAMstack solution. It is a modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup. No backend logic or persistence layer access — everything is encapsulated in the API. More info at [JAMstack homepage](https://jamstack.org/).
 Website is based on [Gatsby](gatsbyjs.org)
 
 ## Actions
@@ -87,7 +87,7 @@ We don't want to store secrets in the deployment pipeline, so let's put them in 
 
 ### Make a deploy pipeline
 
-Azure pipelines Release pipeline construct is not supporting YAML yet. But we want to follow the "pipeline as code" principle, we will make deploy in the deployment pipeline. Create and save, but don't run.
+Azure pipelines Release pipeline construct is not supporting YAML yet. But we want to follow the "pipeline as code" principle,so let's make deploy in the deployment pipeline. Create and save, but don't run.
 ![add deploy pipeline](https://publicbw.blob.core.windows.net/techsummit/makedeploypipeline.gif)
 
 ### Connect Azure Key Vault and add variables to variable group
