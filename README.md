@@ -1,78 +1,55 @@
-# Gatsby Starter: Minimal Blog
+# MS TechSummit Oslo 2018 demo: Minimal Blog deployed thru Azure DevOps with Terraform and Github usage
 
-Big typography, focus on the content & minimal style.
 
-[Demo Website](https://minimal-blog.netlify.com/)
+## About demo
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/LeKoArts/gatsby-starter-minimal-blog) [![Edit gatsby-starter-minimal-blog](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/LekoArts/gatsby-starter-minimal-blog/tree/master/)
+Inspired by my collegue's blog post: 
+https://open.microsoft.com/2018/11/16/terraform-jamstack-azure-gatsby-azure-pipelines-git/
 
-## About Me
+__Updated and modified for the MS Oslo TechSummit 2018 demo purpose (demo date: 06.12.2018)__
 
-I hope you like my starters and create something awesome! To see some of my work you can visit my [website](https://www.lekoarts.de) or support me on [Patreon](https://www.patreon.com/lekoarts) to get some neat rewards (4K images, project files, tutorial insights). Every pledge on Patreon helps me creating more free starters!
 
-Also check out the other _gatsby-starters_:
+## Architecture of workflow
+![flow](https://open.microsoft.com/wp-content/uploads/2018/11/JAMStack-workflow_image-1-v2.png)
 
-- [gatsby-starter-portfolio-emma](https://github.com/LeKoArts/gatsby-starter-portfolio-emma)
-- [gatsby-starter-portfolio-emilia](https://github.com/LeKoArts/gatsby-starter-portfolio-emilia)
-- [gatsby-starter-portfolio-bella](https://github.com/LeKoArts/gatsby-starter-portfolio-bella)
-- [gatsby-starter-portfolio-cara](https://github.com/LeKoArts/gatsby-starter-portfolio-cara)
+## Application architecture
 
-Check out the [Gatsby Starter Portfolio Overview](https://gatsby-starter-portfolio.netlify.com/)!
+The application is based on JAMstack solution. It is a modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup. No backend logic or persistence layer access — everything is encapsulated in the API. More info at [JAMstack homepage](https://jamstack.org/). 
+Website is based on [Gatsby](gatsbyjs.org)
 
-## Features
+## Actions
 
-As this starter is used for my (german) tutorials on my [blog](https://www.lekoarts.de/blog) the features are subject to change. I'll add more features or replace some with other features in the process.
+### Website running locally in dev mode
 
-Current features:
-
-- Gatsby v2.0.0
-- Articles in Markdown
-- Styled Components 💅
-- Netlify Contact Form
-- Categories
-- Offline Support
-- WebApp Manifest Support
-- Typography.js
-- SEO
-  - Sitemap
-  - Schema.org JSONLD
-  - OpenGraph Tags
-  - Twitter Tags
-- Favicons
-
-## Getting Started
-
-Check your development environment! You'll need [Node.js](https://nodejs.org/en/), the [Gatsby CLI](https://www.gatsbyjs.org/docs/) and [node-gyp](https://github.com/nodejs/node-gyp#installation) installed. The official Gatsby website also lists two articles regarding this topic:
-
-- [Gatsby on Windows](https://www.gatsbyjs.org/docs/gatsby-on-windows/)
-- [Check your development environment](https://www.gatsbyjs.org/tutorial/part-zero/)
-
-To copy and install this starter run this command (with "project-name" being the name of your folder you wish to install it in):
-
-```
-gatsby new project-name https://github.com/LeKoArts/gatsby-starter-minimal-blog
-cd project-name
-npm run dev
+```bash
+npm install --global gatsby-cli
+gatsby new techsummit2018 git@github.com:texnokot/techsummit2018.git
+cd techsummit2018
+gatsby develop
 ```
 
-### Adding new features/plugins
+### Action points
 
-You can add other features by having a look at the official [plugins page](https://www.gatsbyjs.org/docs/plugins/)
+1. Connect Github repository with Azure DevOps Services
+2. Build pipeline to cook website: 
+    * Prepare blog static files for deploy
+3. Build pipeline to deploy infrastructure and code:
+    * Make storage account where blog will be hosted
+    * Enable Static Website option on storage account
+    * Deploy Azure CDN profile and endpoint with pointing to Storage account
+    * Upload static assets to container in storage account
+4. Don't forget to make Terraform state storage account
+5. Tune Terraform variables and connect to Azure subscription (Azure KeyVault example)
+6. Run both pipelines and enjoy website
+7. Add security checks for packages and libraries used into Build pipeline with Whitespace Bolt help
 
-### Changing the date format
 
-This starter uses Gatsby's built-in date formatter in the GraphQL queries. If you want to change the date format you see on the index page or other overviews have a look at the GraphQL query. It contains the line:
+### Going into details
 
-```graphql
-date(formatString: "DD.MM.YYYY")
-```
 
-### Building your site
 
-```
-npm run build
-```
 
-Copy the content of the `public` folder to your webhost or use a website like Netlify which automates that for you.
 
-**Attention:** You also need to edit `static/robots.txt` to include your domain!
+
+
+
