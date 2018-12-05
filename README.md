@@ -101,6 +101,7 @@ Azure pipelines Release pipeline construct is not supporting YAML yet. But we wa
 ### Set up triggers
 
 To enable Continious integration after each build or if infrastructure has changed we should enable triggers.
+In the deploy pipeline enable CI and link Build completion to be sure that Deploy pipeline is triggered after build completion.
 
 ![enable triggers](https://publicbw.blob.core.windows.net/techsummit/triggers.gif)
 
