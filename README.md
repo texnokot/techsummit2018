@@ -121,4 +121,4 @@ To enable it in build pipeline add following in the end of YAML file:
 Now after build run you will see security status of the project.
 ![bolt](https://publicbw.blob.core.windows.net/techsummit/bolt.png)
 
-Uff, seems not so good! But that's another story...
+Uff, seems not so good! But that's another story..
