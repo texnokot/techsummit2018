@@ -7,6 +7,9 @@ resources:
   - container: terraform_container
     image: lenisha/terraform-light
 
+variables:
+- group: secrets
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
