@@ -39,6 +39,8 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts: drop'
 
+- task: whitesource.ws-bolt.bolt.wss.WhiteSource Bolt@18
+  displayName: 'WhiteSource Bolt'
 
 
 
