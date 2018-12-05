@@ -8,8 +8,6 @@ Inspired by my collegue's blog post:
 https://open.microsoft.com/2018/11/16/terraform-jamstack-azure-gatsby-azure-pipelines-git/
 How to configure and deploy pls look in provided link. This repository is updated with Azure Key Vault and WhiteSource Bolt plugin in deploy pipelines.
 
-__Updated and modified for the MS Oslo TechSummit 2018 demo purpose (demo date: 06.12.2018)__
-
 ## Architecture of workflow
 
 ![flow](https://open.microsoft.com/wp-content/uploads/2018/11/JAMStack-workflow_image-1-v2.png)
