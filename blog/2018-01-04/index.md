@@ -1,6 +1,6 @@
 ---
 date: "2018-01-04"
-title: "Xylophonmusik - is all about music, right?"
+title: "Xylophonmusik"
 category: "Music"
 ---
 
